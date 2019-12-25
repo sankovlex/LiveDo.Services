@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "LiveDo.Auth.DbContext.Migrations2": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

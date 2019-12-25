@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>e6446aed-00d6-48a9-a2a7-a3b334fd5ffd</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="IdentityServer4" Version="3.0.2" />
+    <PackageReference Include="IdentityServer4.EntityFramework" Version="3.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="3.1.0" />
+    <PackageReference Include="Serilog" Version="2.9.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.0.0-rc5" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.0.0-rc5" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="5.0.0-rc5" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\LiveDo.Auth.Domain.Users.Services.Password\LiveDo.Auth.Domain.Users.Services.Password.csproj" />
+    <ProjectReference Include="..\..\Domain\LiveDo.Auth.Domain.Users.Services\LiveDo.Auth.Domain.Users.Services.csproj" />
+    <ProjectReference Include="..\..\Domain\LiveDo.Auth.Domain.Users\LiveDo.Auth.Domain.Users.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\LiveDo.Auth.DbContext\LiveDo.Auth.DbContext.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\LiveDo.Auth.Repositories.Users\LiveDo.Auth.Repositories.Users.csproj" />
+  </ItemGroup>
+</Project>

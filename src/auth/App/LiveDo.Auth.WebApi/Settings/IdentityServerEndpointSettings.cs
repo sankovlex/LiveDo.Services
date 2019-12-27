@@ -1,6 +1,6 @@
 ﻿namespace LiveDo.Auth.WebApi.Settings
 {
-	public class IdentityServerSettings
+	public class IdentityServerEndpointSettings
 	{
 		private const string SettingPath = "Casebook.API/Auth/Configuration";
 

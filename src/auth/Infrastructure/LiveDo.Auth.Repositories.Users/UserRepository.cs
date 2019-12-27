@@ -27,7 +27,7 @@ namespace LiveDo.Auth.Repositories.Users
 			string passwordHash,
 			CancellationToken cancellationToken)
 		{
-			var user = await _dbContext.Users
+			InternalUser user = await _dbContext.Users
 				.OfType<InternalUser>()
 				.FirstOrDefaultAsync(
 					u => 

@@ -1,0 +1,32 @@
+﻿@model LiveDo.Auth.WebApp.ViewModels.ErrorViewModel
+
+@{
+    string error = Model?.Error;
+    string errorDescription = Model?.ErrorDescription;
+    string requestId = Model?.RequestId;
+}
+
+<div>
+    <h2>Ошибка</h2>
+
+    @if (error != null)
+    {
+        <p class="alert">
+            @error
+        </p>
+
+        if (errorDescription != null)
+        {
+            <p>
+                @errorDescription
+            </p>
+        }
+    }
+
+    @if (@requestId != null)
+    {
+        <div class="request-id">
+            Запрос: @requestId
+        </div>
+    }
+</div>

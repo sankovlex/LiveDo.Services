@@ -1,0 +1,58 @@
+@using LiveDo.Auth.WebApp.ViewModels
+@model LiveDo.Auth.WebApp.ViewModels.LoginInputModel
+
+@{
+    ViewData["Title"] = "Sign In";
+}
+
+<div>
+    <h2>Sign In</h2>
+
+    <form method="post" asp-route="Login">
+
+        <input type="hidden" asp-for="ReturnUrl"/>
+
+        <div>
+            <input type="text"
+                   asp-for="Username" 
+                   autofocus
+                   maxlength="255"
+                   autocomplete="off"
+                   required>
+            <span asp-validation-for="Username"></span>
+        </div>
+        
+        <div>
+            <input type="password"
+                   aria-controls="name-validation-message"
+                   aria-describedby="name-validation-message"
+                   asp-for="Password"
+                   maxlength="255"
+                   required>
+            <span asp-validation-for="Password"></span>
+        </div>
+
+        <div asp-validation-summary="ModelOnly"></div>
+
+        <div>
+            <button name="button" value="login">Войти</button>
+        </div>
+        
+    </form>
+    
+    <h2>Sign Up from external providers</h2>
+    
+    <ul>
+    @foreach (ExternalProviderViewModel provider in Model.ExternalProviders)
+    {
+        <li>
+            <a asp-controller="External"
+               asp-action="Challenge"
+               asp-route-provider="@provider.SchemeName"
+               asp-route-returnUrl="@Model.ReturnUrl">`88
+                @provider.DisplayName
+            </a>
+        </li>
+    }
+    </ul>
+</div>

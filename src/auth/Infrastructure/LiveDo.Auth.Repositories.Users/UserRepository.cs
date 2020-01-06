@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using LiveDo.Abstractions.Repository.EntityFrameworkCore;
@@ -9,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LiveDo.Auth.Repositories.Users
 {
+	/// <inheritdoc cref="IUserRepository" />
 	public class UserRepository : Repository<User, Guid>, IUserRepository
 	{
 		private readonly AuthDbContext _dbContext;
@@ -22,20 +22,25 @@ namespace LiveDo.Auth.Repositories.Users
 		}
 
 		/// <inheritdoc />
-		public async Task<User> GetByUsernameAndPasswordAsync(
-			string username,
-			string passwordHash,
-			CancellationToken cancellationToken)
+		public async Task<User> GetByUsernameAsync(string username, CancellationToken cancellationToken)
 		{
-			InternalUser user = await _dbContext.Users
-				.OfType<InternalUser>()
+			User user = await _dbContext.Users
 				.FirstOrDefaultAsync(
-					u => 
-						u.Email == username && 
-						u.PasswordHash == passwordHash, 
-				cancellationToken);
+					u => u.Email == username,
+					cancellationToken);
 
 			return user;
+		}
+
+		/// <inheritdoc />
+		public async Task<bool> IsExistedAsync(string email, CancellationToken cancellationToken)
+		{
+			bool isExists = await _dbContext.Users
+				.AnyAsync(
+					u => u.Email == email,
+					cancellationToken);
+
+			return isExists;
 		}
 	}
 }

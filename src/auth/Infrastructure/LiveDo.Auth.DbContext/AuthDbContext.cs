@@ -1,5 +1,7 @@
 ﻿using LiveDo.Auth.Domain.Users;
 using LiveDo.Auth.UsersDbContext.Mappings;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace LiveDo.Auth.UsersDbContext
@@ -7,24 +9,24 @@ namespace LiveDo.Auth.UsersDbContext
 	/// <summary>
 	/// Auth database context.
 	/// </summary>
-	public class AuthDbContext : DbContext
+	public class AuthDbContext : IdentityDbContext<User>
 	{
 		/// <inheritdoc />
-		public AuthDbContext(DbContextOptions options)
+		public AuthDbContext(DbContextOptions<AuthDbContext> options)
 			: base(options)
 		{
 		}
 
-		/// <summary>
-		/// Users.
-		/// </summary>
-		public DbSet<User> Users { get; set; }
-
 		/// <inheritdoc />
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
+			modelBuilder.ApplyConfiguration(new LoginMap());
+			modelBuilder.ApplyConfiguration(new RoleClaimMap());
+			modelBuilder.ApplyConfiguration(new RoleMap());
+			modelBuilder.ApplyConfiguration(new TokenMap());
+			modelBuilder.ApplyConfiguration(new UserClaimsMap());
 			modelBuilder.ApplyConfiguration(new UserMap());
-			modelBuilder.ApplyConfiguration(new InternalUserMap());
+			modelBuilder.ApplyConfiguration(new UserRoleMap());
 		}
 	}
 }

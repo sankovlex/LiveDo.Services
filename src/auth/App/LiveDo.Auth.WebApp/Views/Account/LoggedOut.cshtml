@@ -1,0 +1,18 @@
+@model LiveDo.Auth.WebApp.ViewModels.LoggedOutViewModel
+
+@{
+    ViewData["Title"] = "Выход";
+}
+
+<div>
+    @if (Model.PostLogoutRedirectUri != null)
+    {
+        <p>
+            <a href="@Model.PostLogoutRedirectUri">Вернуться к приложению @Model.ClientName</a>
+        </p>
+    }
+    else
+    {
+        <a href="@Url.Action("Index")">Вернуться</a>
+    }
+</div>

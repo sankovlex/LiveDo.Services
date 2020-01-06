@@ -1,0 +1,17 @@
+@model LiveDo.Auth.WebApp.ViewModels.LogoutViewModel
+
+@{
+    ViewData["Title"] = "Выход";
+}
+
+<div>
+    <p>Вы действительно хотите выйти?</p>
+    
+    <form asp-action="Logout">
+        <input type="hidden" name="logoutId" value="@Model.LogoutId"/>
+        
+        <div>
+            <button name="button" value="logout">Выйти</button>
+        </div>
+    </form>
+</div>

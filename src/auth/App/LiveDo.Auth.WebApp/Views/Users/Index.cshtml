@@ -1,0 +1,17 @@
+﻿@model LiveDo.Auth.WebApp.Controllers.UserInputModel
+
+@{
+    ViewData["Title"] = "Sign up";
+}
+
+<h2>
+    Sign up
+</h2>
+
+<div>
+    @using(Html.BeginForm("Register", "Users", FormMethod.Post))
+    {
+        @Html.EditorForModel()
+        <input type="submit" value="Register" />
+    }
+</div>

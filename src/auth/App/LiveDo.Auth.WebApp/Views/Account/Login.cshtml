@@ -40,6 +40,12 @@
         
     </form>
     
+    <h2>Sign up</h2>
+    
+    <div>
+        <a asp-controller="Users" asp-action="Index">Sign up</a>
+    </div>
+    
     <h2>Sign Up from external providers</h2>
     
     <ul>
@@ -49,7 +55,7 @@
             <a asp-controller="External"
                asp-action="Challenge"
                asp-route-provider="@provider.SchemeName"
-               asp-route-returnUrl="@Model.ReturnUrl">`88
+               asp-route-returnUrl="@Model.ReturnUrl">
                 @provider.DisplayName
             </a>
         </li>

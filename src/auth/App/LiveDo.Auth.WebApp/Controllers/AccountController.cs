@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 using IdentityServer4.Configuration;
+using IdentityServer4.Extensions;
 using IdentityServer4.Models;
 using IdentityServer4.Services;
 using LiveDo.Auth.Domain.Users;
@@ -54,7 +55,7 @@ namespace LiveDo.Auth.WebApp.Controllers
 		{
 			var user = new UserViewModel()
 			{
-				Username = User.Identity.Name
+				Username = User.GetDisplayName()
 			};
 
 			return View(user);

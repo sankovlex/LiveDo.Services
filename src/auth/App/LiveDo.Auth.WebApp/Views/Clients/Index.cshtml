@@ -1,0 +1,24 @@
+﻿@using IdentityServer4.Models
+@model System.Collections.Generic.List<IdentityServer4.Models.Client>
+
+@{
+    ViewData["Title"] = "Clients";
+}
+
+<div>
+    <a asp-controller="Clients" asp-action="Client">Create</a>
+</div>
+
+<div>
+    <ul>
+        @foreach (Client client in Model)
+        {
+            <li>
+                <a asp-controller="Clients"
+                   asp-action="Index">
+                    @client.ClientName
+                </a>
+            </li>
+        }
+    </ul>
+</div>

@@ -31,7 +31,12 @@ namespace LiveDo.Auth.WebApp
 
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddMvc(opt => opt.EnableEndpointRouting = false)
+			services.AddMvc(opt =>
+				{
+					opt.EnableEndpointRouting = false;
+				})
+				.AddControllersAsServices()
+				.AddRazorRuntimeCompilation()
 				.AddNewtonsoftJson()
 				.SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
